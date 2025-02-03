@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { PictureHeap, PictureHeapDimensions } from "./picture-heap";
+import { PictureHeap, PictureHeapDimensions } from "./picture-heap/picture-heap";
 import { getPicturesInRandomOrder } from "./consts";
 
 export default function Home() {
@@ -14,21 +14,30 @@ export default function Home() {
     });
 
     useEffect(() => {
-        const screenWidth = window.innerWidth;
-        const screenHeight = window.innerHeight;
+        const updateDimensions = () => {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
 
-        setDimensions({
-            width: screenWidth - padding * 2,
-            height: screenHeight - padding * 2,
-            imageSize: 320,
-        });
+            setDimensions({
+                width: screenWidth - padding * 2,
+                height: screenHeight - padding * 2,
+                imageSize: 300,
+            });
+        };
+
+        updateDimensions(); // Set initial dimensions
+        window.addEventListener('resize', updateDimensions); // Update dimensions on resize
+
+        return () => {
+            window.removeEventListener('resize', updateDimensions); // Cleanup listener on unmount
+        };
     }, []);
 
     return (
         <div className="block w-screen h-screen bg-[#DBDBDB]" style={{
             padding: `${padding}px`,
         }}>
-            <PictureHeap pictureImages={getPicturesInRandomOrder()} dimensions={dimensions} className="w-full h-full" />
+            <PictureHeap images={getPicturesInRandomOrder()} dimensions={dimensions} className="w-full h-full" />
         </div>
     );
 }
