@@ -18,5 +18,5 @@ import l from '@/pictures/FB00FCAD-50E2-4296-92E7-D95624DC1FA1_1_105_c 1.png';
 export const pictures = [a, b, c, d, e, f, g, h, i, j, k, l];
 
 export function getPicturesInRandomOrder(): StaticImageData[] {
-  return pictures.sort(() => Math.random() - 0.5);
+    return pictures.sort(() => Math.random() - 0.5);
 }

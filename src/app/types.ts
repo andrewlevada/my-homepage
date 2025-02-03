@@ -1,4 +1,4 @@
 export interface Coordinate {
-  readonly x: number;
-  readonly y: number;
+    readonly x: number;
+    readonly y: number;
 }

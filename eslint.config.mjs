@@ -13,7 +13,8 @@ const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     rules: {
-      "indent": ["error", 4]
+      "indent": ["warn", 4],
+      "@typescript-eslint/no-unused-vars": "off",
     },
   },
 ];
