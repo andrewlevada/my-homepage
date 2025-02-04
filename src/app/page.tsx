@@ -5,7 +5,7 @@ import { PictureHeap, PictureHeapDimensions } from "./picture-heap/picture-heap"
 import { getPicturesInRandomOrder } from "./consts";
 
 export default function Home() {
-    const padding = 40; // px
+    const padding = 8; // px
 
     const [dimensions, setDimensions] = useState<PictureHeapDimensions>({
         width: 0,
@@ -21,7 +21,7 @@ export default function Home() {
             setDimensions({
                 width: screenWidth - padding * 2,
                 height: screenHeight - padding * 2,
-                imageSize: 300,
+                imageSize: 400,
             });
         };
 
